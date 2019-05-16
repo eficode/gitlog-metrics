@@ -1,0 +1,7 @@
+*.Rproj
+.RData
+.Rhistory
+.Rproj.user
+Rplots.pdf
+
+out
