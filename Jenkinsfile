@@ -8,11 +8,11 @@ node('docker') {
   stage('checkout') {
     deleteDir()
     checkout scm
-    bash "git clone git@github.com:adamtornhill/code-maat.git ${codemaatfolder}"
-    bash "git clone git@github.com:Praqma/2git.git ${targetrepo}"
+    sh "git clone git@github.com:adamtornhill/code-maat.git ${codemaatfolder}"
+    sh "git clone git@github.com:Praqma/2git.git ${targetrepo}"
   }
   stage('create plots') {
-    bash "./getmetrics.sh ${projectname} ${startdate} ${targetrepo} ${codemaatfolder}"
+    sh "./getmetrics.sh ${projectname} ${startdate} ${targetrepo} ${codemaatfolder}"
   }
   stage('archive') {
     archiveArtifacts "out/**/*.*"
