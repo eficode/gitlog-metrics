@@ -11,8 +11,19 @@ node('docker') {
     sh "git clone https://github.com/adamtornhill/code-maat.git ${codemaatfolder}"
     sh "git clone https://github.com/Praqma/2git.git ${targetrepo}"
   }
-  stage('create plots') {
+  stage('gather stats') {
     sh "./getmetrics.sh ${projectname} ${startdate} ${targetrepo} ${codemaatfolder}"
+  }
+  stage('create plots') {
+      withEnv(["DATA=${projectname}"]) {
+        docker.image('drbosse/tidyverse-hashmap:0.1.1').inside {
+          sh '''ls -l
+          Rscript plot.r'''
+        }
+      }
+  }
+  stage('html') {
+    sh "./html.sh ${projectname}"
   }
   stage('archive') {
     archiveArtifacts "out/**/*.*"
