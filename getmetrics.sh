@@ -32,10 +32,10 @@ echo "./-\. Building CODE-MAAT"
 cd $CODEMAAT && docker build -t code-maat-app .
 
 echo "./-\. Generating authors-per-module.csv"
-docker run -v $CODESPACE:/data -it code-maat-app -l /data/logfile.log -c git2 > $DATA/authors-per-module.csv
+docker run -v $CODESPACE:/data code-maat-app -l /data/logfile.log -c git2 > $DATA/authors-per-module.csv
 for i in "coupling" "age" "abs-churn" "author-churn" "entity-churn" "entity-ownership" "entity-effort"; do
   echo "./-\. Generating $i.csv"
-  docker run -v $CODESPACE:/data -it code-maat-app -l /data/logfile.log -c git2 -a $i > $DATA/$i.csv
+  docker run -v $CODESPACE:/data code-maat-app -l /data/logfile.log -c git2 -a $i > $DATA/$i.csv
 done
 
 # post processing
