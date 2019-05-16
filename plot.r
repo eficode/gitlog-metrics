@@ -222,7 +222,7 @@ p6
 
 p7 <- ggplot(data = metricAuthorsPerModule, aes(x = n.authors)) + commontheme +
   geom_point(aes(y = n.revs, color = folder), position=position_jitter(width=.49,height=.49)) +
-  ggtitle("P7 - complexity (revisions vs. authors)") +
+  ggtitle("P7 - volatility (revisions vs. authors)") +
   scale_color_manual(values = col_vector) +
   guides(color=guide_legend(ncol=1))
 p7
