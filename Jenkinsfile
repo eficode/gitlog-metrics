@@ -1,13 +1,13 @@
 
-projectname="2git"
-startdate="2017-01-01"
-targetrepo="2git"
+projectname="git-katas"
+startdate="2016-09-09"
+targetrepo="git-katas"
 
 node('docker') {
   stage('checkout') {
     deleteDir()
     checkout scm
-    sh "git clone https://github.com/Praqma/2git.git ${targetrepo}"
+    sh "git clone https://github.com/praqma-training/git-katas.git ${targetrepo}"
   }
   stage('gather stats') {
     sh "./getmetrics.sh ${projectname} ${startdate} ${targetrepo}"
