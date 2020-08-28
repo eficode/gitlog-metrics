@@ -1,3 +1,3 @@
-#!/bin/bash
-cd /tmp/
-DATA=$projectname Rscript plot.r
+#!/bin/bash -x
+cd /tmp/gitlog
+DATA=$(cat tmpprojectname) Rscript plot.r

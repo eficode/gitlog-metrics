@@ -37,7 +37,9 @@ done
 cd $METRICFOLDER
 rm $TARGET/img/*.png
 
-docker run -v $(pwd)out:/tmp/out -it drbosse/tidyverse-hashmap:0.1.1 /bin/bash -c cd /tmp/; DATA=$projectname Rscript plot.r
+echo $projectname > tmpprojectname
+docker run -v $(pwd):/tmp/gitlog/ -it drbosse/tidyverse-hashmap:0.1.1 /bin/bash -c /tmp/gitlog/dockerscript.sh $projectname
+rm tmpprojectname
 #DATA=$projectname Rscript plot.r
 
 ./html.sh $projectname
