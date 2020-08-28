@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 projectname=$1
 startdate=$2
